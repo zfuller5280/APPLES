@@ -1,25 +1,325 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MYRIADPRO-REGULAR.OTF">
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
+        <!--Popup Modal View-->
+        <scene sceneID="VVS-1g-Yzt">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="exP-Tn-4r6" customClass="PopupModalView" customModule="APPLES" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wuB-sz-o8a"/>
+                        <viewControllerLayoutGuide type="bottom" id="xUR-Ar-33W"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="sfa-hx-9Qn" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ejj-H7-mRX">
+                                <rect key="frame" x="20" y="28" width="335" height="619"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkX-B9-T2V">
+                                        <rect key="frame" x="285" y="581" width="39" height="30"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ruf-X8-xG7" kind="unwind" unwindAction="unwindFromSecondary:" id="06v-Z8-883"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qEm-Ph-8sx">
+                                        <rect key="frame" x="8" y="19" width="319" height="554"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qEm-Ph-8sx" secondAttribute="height" multiplier="319:554" id="uuB-gJ-AzA"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qEm-Ph-8sx" secondAttribute="trailing" constant="8" id="3bt-LN-Z8z"/>
+                                    <constraint firstItem="zkX-B9-T2V" firstAttribute="trailing" secondItem="Ejj-H7-mRX" secondAttribute="trailingMargin" constant="-3" id="Leq-ov-BVB"/>
+                                    <constraint firstItem="qEm-Ph-8sx" firstAttribute="leading" secondItem="Ejj-H7-mRX" secondAttribute="leading" constant="8" id="imi-BJ-9zm"/>
+                                    <constraint firstItem="zkX-B9-T2V" firstAttribute="bottom" secondItem="Ejj-H7-mRX" secondAttribute="bottomMargin" id="olm-2z-h0I"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ejj-H7-mRX" firstAttribute="top" secondItem="wuB-sz-o8a" secondAttribute="bottom" constant="8" id="HDd-ed-iwY"/>
+                            <constraint firstItem="Ejj-H7-mRX" firstAttribute="centerX" secondItem="sfa-hx-9Qn" secondAttribute="centerX" id="OuF-yh-Kh6"/>
+                            <constraint firstItem="Ejj-H7-mRX" firstAttribute="leading" secondItem="sfa-hx-9Qn" secondAttribute="leadingMargin" id="ipn-bJ-Ra7"/>
+                            <constraint firstItem="Ejj-H7-mRX" firstAttribute="centerY" secondItem="sfa-hx-9Qn" secondAttribute="centerY" constant="4" id="ngR-OE-9Ye"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoText" destination="qEm-Ph-8sx" id="rNt-SA-lf4"/>
+                        <outlet property="popupView" destination="Ejj-H7-mRX" id="6Rh-xF-1na"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rov-bp-Yy9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ruf-X8-xG7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="763.5" y="-287.5"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="APPLES" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apples-app-wireframe.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vp6-sE-PC2" userLabel="Template">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apples_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="0vc-Wa-FWe" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Species" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfF-Y9-NW8" userLabel="Species Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
+                                <rect key="frame" x="26" y="35" width="323" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="r5i-xU-gDd"/>
+                                </constraints>
+                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="40" width="323" height="46"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-T3-T4F" userLabel="Bloom Date Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
+                                <rect key="frame" x="26" y="101" width="323" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="gJa-ZH-99g"/>
+                                </constraints>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="116" width="323" height="46"/>
+                                </variation>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="5UD-AJ-YFd"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ROT-lv-ekI" userLabel="Location Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
+                                <rect key="frame" x="26" y="251" width="323" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="UXL-9l-2z3"/>
+                                </constraints>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="276" width="323" height="46"/>
+                                </variation>
+                                <connections>
+                                    <action selector="locationFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="txa-AO-ozk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" placeholder="Additional Comments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Blt-zQ-ZSg" userLabel="Comments Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
+                                <rect key="frame" x="26" y="315" width="323" height="188"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="353" width="323" height="143"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXi-LE-Rys">
+                                <rect key="frame" x="26" y="523" width="323" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="kUa-oM-fMC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                <state key="normal" title="Upload Photo">
+                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="514" width="323" height="56"/>
+                                </variation>
+                                <connections>
+                                    <action selector="uploadBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgD-zH-OsT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-NW-Odn">
+                                <rect key="frame" x="26" y="221" width="187" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="r2F-Fz-NvW"/>
+                                    <constraint firstAttribute="width" constant="187" id="wXF-Xg-ERr"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="pheno_btn.png"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="244" width="187" height="0.0"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="exP-Tn-4r6" kind="presentation" modalPresentationStyle="overCurrentContext" id="ER2-we-ckV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Phenophase" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-fi-64T" userLabel="Phenophase Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
+                                <rect key="frame" x="26" y="167" width="323" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="ssJ-Q5-k8m"/>
+                                </constraints>
+                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="190" width="323" height="46"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ei-82-w76">
+                                <rect key="frame" x="26" y="588" width="323" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7ei-82-w76" secondAttribute="height" multiplier="323:49" id="2rV-eE-BQc"/>
+                                    <constraint firstAttribute="height" priority="750" constant="49" id="7Kb-JA-gUT"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="submit-01.png"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="588" width="323" height="49"/>
+                                </variation>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rfF-Y9-NW8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="0Nf-ST-NGi"/>
+                            <constraint firstItem="ROT-lv-ekI" firstAttribute="top" secondItem="XaS-NW-Odn" secondAttribute="bottom" constant="16" id="0Xf-ph-g7G"/>
+                            <constraint firstItem="Vp6-sE-PC2" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="17P-Sc-duX"/>
+                            <constraint firstItem="XaS-NW-Odn" firstAttribute="leading" secondItem="ROT-lv-ekI" secondAttribute="leading" id="1Zv-NW-igo"/>
+                            <constraint firstAttribute="trailing" secondItem="0vc-Wa-FWe" secondAttribute="trailing" id="2G2-QD-i7N"/>
+                            <constraint firstItem="ruf-T3-T4F" firstAttribute="trailing" secondItem="GeB-fi-64T" secondAttribute="trailing" id="6mD-ft-nxU"/>
+                            <constraint firstItem="ROT-lv-ekI" firstAttribute="trailing" secondItem="Blt-zQ-ZSg" secondAttribute="trailing" id="73J-vM-w7u"/>
+                            <constraint firstItem="ruf-T3-T4F" firstAttribute="leading" secondItem="GeB-fi-64T" secondAttribute="leading" id="9Mq-5N-oNq"/>
+                            <constraint firstItem="Blt-zQ-ZSg" firstAttribute="trailing" secondItem="IXi-LE-Rys" secondAttribute="trailing" id="9Ro-Bf-8mn"/>
+                            <constraint firstItem="GeB-fi-64T" firstAttribute="trailing" secondItem="ROT-lv-ekI" secondAttribute="trailing" id="C2M-ow-8Pe"/>
+                            <constraint firstItem="GeB-fi-64T" firstAttribute="top" secondItem="ruf-T3-T4F" secondAttribute="bottom" constant="20" id="FUE-FD-Paz"/>
+                            <constraint firstItem="0vc-Wa-FWe" firstAttribute="centerX" secondItem="GeB-fi-64T" secondAttribute="centerX" id="GjD-hf-DJ3"/>
+                            <constraint firstItem="0vc-Wa-FWe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MYM-G2-8KM"/>
+                            <constraint firstItem="GeB-fi-64T" firstAttribute="leading" secondItem="XaS-NW-Odn" secondAttribute="leading" id="O7g-X5-sft"/>
+                            <constraint firstItem="rfF-Y9-NW8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="TK6-Pu-0Ox"/>
+                            <constraint firstItem="rfF-Y9-NW8" firstAttribute="trailing" secondItem="ruf-T3-T4F" secondAttribute="trailing" id="Vf1-0Q-mo3"/>
+                            <constraint firstItem="Vp6-sE-PC2" firstAttribute="leading" secondItem="0vc-Wa-FWe" secondAttribute="leading" id="XgX-qw-BxB"/>
+                            <constraint firstItem="7ei-82-w76" firstAttribute="top" secondItem="IXi-LE-Rys" secondAttribute="bottom" constant="20" id="aQO-hH-Xif"/>
+                            <constraint firstItem="IXi-LE-Rys" firstAttribute="leading" secondItem="7ei-82-w76" secondAttribute="leading" id="b9Z-g0-TWq"/>
+                            <constraint firstItem="XaS-NW-Odn" firstAttribute="top" secondItem="GeB-fi-64T" secondAttribute="bottom" constant="8" symbolic="YES" id="deu-aE-lby"/>
+                            <constraint firstItem="Vp6-sE-PC2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fRT-fr-5tY"/>
+                            <constraint firstItem="0vc-Wa-FWe" firstAttribute="trailing" secondItem="Vp6-sE-PC2" secondAttribute="trailing" id="fg2-Rw-GKY"/>
+                            <constraint firstItem="IXi-LE-Rys" firstAttribute="trailing" secondItem="7ei-82-w76" secondAttribute="trailing" id="gCs-UU-F9F"/>
+                            <constraint firstItem="rfF-Y9-NW8" firstAttribute="leading" secondItem="ruf-T3-T4F" secondAttribute="leading" id="gtD-oY-yZb"/>
+                            <constraint firstItem="ruf-T3-T4F" firstAttribute="top" secondItem="rfF-Y9-NW8" secondAttribute="bottom" constant="20" id="h0Z-eZ-uBi"/>
+                            <constraint firstItem="Blt-zQ-ZSg" firstAttribute="top" secondItem="ROT-lv-ekI" secondAttribute="bottom" constant="18" id="hFT-OR-2qq"/>
+                            <constraint firstItem="ROT-lv-ekI" firstAttribute="leading" secondItem="Blt-zQ-ZSg" secondAttribute="leading" id="jxR-59-PUD"/>
+                            <constraint firstItem="IXi-LE-Rys" firstAttribute="top" secondItem="Blt-zQ-ZSg" secondAttribute="bottom" constant="20" id="knl-e0-fNL"/>
+                            <constraint firstItem="Vp6-sE-PC2" firstAttribute="top" secondItem="0vc-Wa-FWe" secondAttribute="top" id="l2m-KG-Gw1"/>
+                            <constraint firstItem="Blt-zQ-ZSg" firstAttribute="leading" secondItem="IXi-LE-Rys" secondAttribute="leading" id="mhi-x2-Pbo"/>
+                            <constraint firstItem="0vc-Wa-FWe" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ue1-Jn-mO1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ei-82-w76" secondAttribute="bottom" constant="30" id="uqU-r4-K0f"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bloomDateTextField" destination="ruf-T3-T4F" id="yet-PF-QYY"/>
+                        <outlet property="commentsTextField" destination="Blt-zQ-ZSg" id="xeg-t2-zzK"/>
+                        <outlet property="locationTextField" destination="ROT-lv-ekI" id="Bbw-7w-CdR"/>
+                        <outlet property="phenophaseTextField" destination="GeB-fi-64T" id="tn1-iJ-Pt5"/>
+                        <outlet property="speciesTextField" destination="rfF-Y9-NW8" id="8jj-aB-G3G"/>
+                        <outlet property="submitButton" destination="7ei-82-w76" id="liP-wn-xzj"/>
+                        <outlet property="uploadButton" destination="IXi-LE-Rys" id="GbH-dd-E82"/>
+                        <outlet property="uploadPhotoBtn" destination="IXi-LE-Rys" id="NkO-sd-YfU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="164.25" y="426.75"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="r38-qh-lPD">
+            <objects>
+                <viewController storyboardIdentifier="mapViewController" id="U8w-Gq-kRC" customClass="MapViewController" customModule="APPLES" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p6O-cX-kwT"/>
+                        <viewControllerLayoutGuide type="bottom" id="n7b-n0-5JS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U1A-Lf-Bgu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-17-fmP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGr-G2-pXH">
+                                <rect key="frame" x="26" y="519" width="323" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="KLJ-n7-9KF"/>
+                                    <constraint firstAttribute="width" secondItem="uGr-G2-pXH" secondAttribute="height" multiplier="323:45" id="NN3-Bf-xOa"/>
+                                    <constraint firstAttribute="width" constant="323" id="cwe-us-u5F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KLJ-n7-9KF"/>
+                                        <exclude reference="cwe-us-u5F"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="514" width="323" height="56"/>
+                                </variation>
+                                <connections>
+                                    <action selector="doneBtnClicked:" destination="U8w-Gq-kRC" eventType="touchUpInside" id="klP-Yi-Y7T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="uGr-G2-pXH" secondAttribute="trailing" constant="6" id="3r7-NI-izz"/>
+                            <constraint firstItem="uGr-G2-pXH" firstAttribute="leading" secondItem="U1A-Lf-Bgu" secondAttribute="leadingMargin" constant="6" id="Q0Q-jj-WDP"/>
+                            <constraint firstItem="n7b-n0-5JS" firstAttribute="top" secondItem="uGr-G2-pXH" secondAttribute="bottom" constant="36" id="fdX-D0-jhm"/>
+                            <constraint firstItem="uGr-G2-pXH" firstAttribute="centerX" secondItem="U1A-Lf-Bgu" secondAttribute="centerX" id="lVD-uW-VIc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneBtn" destination="uGr-G2-pXH" id="cZx-XX-cwj"/>
+                        <outlet property="map" destination="qQC-17-fmP" id="b83-MI-fgo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zb1-8F-Edt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.5" y="466.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apples-app-wireframe.png" width="750" height="1431"/>
+        <image name="apples_background.png" width="750" height="1334"/>
+        <image name="pheno_btn.png" width="1324" height="109"/>
+        <image name="submit-01.png" width="642" height="90"/>
+    </resources>
 </document>

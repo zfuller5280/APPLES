@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950E66541D2ADDA00058AF54 /* apples-splash2-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 950E66531D2ADDA00058AF54 /* apples-splash2-01.png */; };
+		950E66561D2C03020058AF54 /* DimBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E66551D2C03020058AF54 /* DimBackground.swift */; };
+		950E67411D2C1A650058AF54 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E67401D2C1A650058AF54 /* MapViewController.swift */; };
+		9595A8421D2D77E700A9C190 /* PopupModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595A8411D2D77E700A9C190 /* PopupModalView.swift */; };
+		9595A8461D2D952A00A9C190 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C5131D28382D00D495CC /* MYRIADPRO-REGULAR.OTF */; };
+		9595A8471D2D952E00A9C190 /* Myriad-Pro-Black-Italic_31618.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9595A8451D2D90B200A9C190 /* Myriad-Pro-Black-Italic_31618.ttf */; };
 		95A8C4E11D282FBB00D495CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8C4E01D282FBB00D495CC /* AppDelegate.swift */; };
 		95A8C4E31D282FBB00D495CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8C4E21D282FBB00D495CC /* ViewController.swift */; };
 		95A8C4E61D282FBB00D495CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C4E41D282FBB00D495CC /* Main.storyboard */; };
@@ -14,6 +20,12 @@
 		95A8C4EB1D282FBB00D495CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C4E91D282FBB00D495CC /* LaunchScreen.storyboard */; };
 		95A8C4F61D282FBB00D495CC /* APPLESTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8C4F51D282FBB00D495CC /* APPLESTests.swift */; };
 		95A8C5011D282FBB00D495CC /* APPLESUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8C5001D282FBB00D495CC /* APPLESUITests.swift */; };
+		95A8C5101D28327400D495CC /* apples_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C50E1D28327400D495CC /* apples_background.png */; };
+		95A8C5111D28327400D495CC /* apples-app-wireframe.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C50F1D28327400D495CC /* apples-app-wireframe.png */; };
+		95A8C5171D28489800D495CC /* submit-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C5161D28489800D495CC /* submit-01.png */; };
+		95A8C5191D284A6300D495CC /* apples-splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C5181D284A6300D495CC /* apples-splash.png */; };
+		95A8C51B1D299FFC00D495CC /* pheno_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A8C51A1D299FFC00D495CC /* pheno_btn.png */; };
+		95E8818E1D3DAC990052D4D3 /* Apples_Launch-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E8818D1D3DAC970052D4D3 /* Apples_Launch-01.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		950E66531D2ADDA00058AF54 /* apples-splash2-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apples-splash2-01.png"; sourceTree = "<group>"; };
+		950E66551D2C03020058AF54 /* DimBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimBackground.swift; sourceTree = "<group>"; };
+		950E67401D2C1A650058AF54 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9595A8411D2D77E700A9C190 /* PopupModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupModalView.swift; sourceTree = "<group>"; };
+		9595A8451D2D90B200A9C190 /* Myriad-Pro-Black-Italic_31618.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myriad-Pro-Black-Italic_31618.ttf"; sourceTree = "<group>"; };
 		95A8C4DD1D282FBB00D495CC /* APPLES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPLES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A8C4E01D282FBB00D495CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95A8C4E21D282FBB00D495CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +64,13 @@
 		95A8C4FC1D282FBB00D495CC /* APPLESUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APPLESUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A8C5001D282FBB00D495CC /* APPLESUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPLESUITests.swift; sourceTree = "<group>"; };
 		95A8C5021D282FBC00D495CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95A8C50E1D28327400D495CC /* apples_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apples_background.png; sourceTree = "<group>"; };
+		95A8C50F1D28327400D495CC /* apples-app-wireframe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apples-app-wireframe.png"; sourceTree = "<group>"; };
+		95A8C5131D28382D00D495CC /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
+		95A8C5161D28489800D495CC /* submit-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit-01.png"; sourceTree = "<group>"; };
+		95A8C5181D284A6300D495CC /* apples-splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apples-splash.png"; sourceTree = "<group>"; };
+		95A8C51A1D299FFC00D495CC /* pheno_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pheno_btn.png; sourceTree = "<group>"; };
+		95E8818D1D3DAC970052D4D3 /* Apples_Launch-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Apples_Launch-01.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +123,14 @@
 			children = (
 				95A8C4E01D282FBB00D495CC /* AppDelegate.swift */,
 				95A8C4E21D282FBB00D495CC /* ViewController.swift */,
+				9595A8411D2D77E700A9C190 /* PopupModalView.swift */,
+				950E66551D2C03020058AF54 /* DimBackground.swift */,
 				95A8C4E41D282FBB00D495CC /* Main.storyboard */,
+				950E67401D2C1A650058AF54 /* MapViewController.swift */,
 				95A8C4E71D282FBB00D495CC /* Assets.xcassets */,
 				95A8C4E91D282FBB00D495CC /* LaunchScreen.storyboard */,
 				95A8C4EC1D282FBB00D495CC /* Info.plist */,
+				95A8C5121D28327900D495CC /* Graphics */,
 			);
 			path = APPLES;
 			sourceTree = "<group>";
@@ -123,6 +151,22 @@
 				95A8C5021D282FBC00D495CC /* Info.plist */,
 			);
 			path = APPLESUITests;
+			sourceTree = "<group>";
+		};
+		95A8C5121D28327900D495CC /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				95A8C50E1D28327400D495CC /* apples_background.png */,
+				950E66531D2ADDA00058AF54 /* apples-splash2-01.png */,
+				95A8C50F1D28327400D495CC /* apples-app-wireframe.png */,
+				95A8C5131D28382D00D495CC /* MYRIADPRO-REGULAR.OTF */,
+				95E8818D1D3DAC970052D4D3 /* Apples_Launch-01.png */,
+				9595A8451D2D90B200A9C190 /* Myriad-Pro-Black-Italic_31618.ttf */,
+				95A8C51A1D299FFC00D495CC /* pheno_btn.png */,
+				95A8C5181D284A6300D495CC /* apples-splash.png */,
+				95A8C5161D28489800D495CC /* submit-01.png */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +276,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9595A8471D2D952E00A9C190 /* Myriad-Pro-Black-Italic_31618.ttf in Resources */,
+				9595A8461D2D952A00A9C190 /* MYRIADPRO-REGULAR.OTF in Resources */,
+				95A8C5171D28489800D495CC /* submit-01.png in Resources */,
+				95A8C5191D284A6300D495CC /* apples-splash.png in Resources */,
+				95E8818E1D3DAC990052D4D3 /* Apples_Launch-01.png in Resources */,
+				95A8C5101D28327400D495CC /* apples_background.png in Resources */,
 				95A8C4EB1D282FBB00D495CC /* LaunchScreen.storyboard in Resources */,
+				950E66541D2ADDA00058AF54 /* apples-splash2-01.png in Resources */,
 				95A8C4E81D282FBB00D495CC /* Assets.xcassets in Resources */,
+				95A8C51B1D299FFC00D495CC /* pheno_btn.png in Resources */,
 				95A8C4E61D282FBB00D495CC /* Main.storyboard in Resources */,
+				95A8C5111D28327400D495CC /* apples-app-wireframe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9595A8421D2D77E700A9C190 /* PopupModalView.swift in Sources */,
+				950E66561D2C03020058AF54 /* DimBackground.swift in Sources */,
 				95A8C4E31D282FBB00D495CC /* ViewController.swift in Sources */,
 				95A8C4E11D282FBB00D495CC /* AppDelegate.swift in Sources */,
+				950E67411D2C1A650058AF54 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +541,7 @@
 				95A8C5071D282FBC00D495CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95A8C5081D282FBC00D495CC /* Build configuration list for PBXNativeTarget "APPLESTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +550,7 @@
 				95A8C50A1D282FBC00D495CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95A8C50B1D282FBC00D495CC /* Build configuration list for PBXNativeTarget "APPLESUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +559,7 @@
 				95A8C50D1D282FBC00D495CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
