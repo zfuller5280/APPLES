@@ -36,6 +36,11 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
     var picker:UIImagePickerController?=UIImagePickerController()
     var popover:UIPopoverPresentationController?=nil
     
+    var userName: NSString! = nil
+    var passWord: NSString! = nil
+    
+    var logInStatus: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,12 +121,14 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         
         let pickerView = UIPickerView()
         pickerView.delegate = self
+        //pickerView.selectRow(0, inComponent: 0, animated: true)
         phenophaseTextField.inputView = pickerView
         
         
     }
     
     func donePressed(sender: UIBarButtonItem) {
+
         phenophaseTextField.resignFirstResponder()
         bloomDateTextField.resignFirstResponder()
         
@@ -283,6 +290,117 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
     
     @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
         dim(.Out, speed: dimSpeed)
+    }
+    
+    @IBAction func submitBtnClicked(sender: AnyObject) {
+        if self.logInStatus == false{
+            var usernameTextField: UITextField?
+            var passwordTextField: UITextField?
+            
+            let alertController = UIAlertController(
+                title: "Log in",
+                message: "Please enter your information",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let loginAction = UIAlertAction(
+            title: "Submit Data", style: UIAlertActionStyle.Default) {
+                (action) -> Void in
+                
+                if let userNameField = usernameTextField?.text {
+                    self.userName = userNameField
+                } else {
+                    print("No Username entered")
+                }
+                
+                if let passWordField = passwordTextField?.text {
+                    self.passWord = passWordField
+                } else {
+                    print("No password entered")
+                }
+                
+                // Check if username and password are blank
+                if ( self.userName.isEqualToString("") || self.passWord.isEqualToString("") ) {
+                    
+                    let errorController = UIAlertController(title: "Error!", message: "Please enter a username and password",preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    errorController.addAction(defaultAction)
+                    self.presentViewController(errorController, animated: true, completion: nil)
+                    
+                    
+                }
+                    
+                else{
+                    let url_to_request: String = ("http://www.psuapples.org/applesConnect.php")
+                    let post_to_send = "userName=\(self.userName)&passWord=\(self.passWord)"
+                    self.check_username(url_to_request, post_to_send: post_to_send)
+                    
+                }
+                
+            }
+            
+            alertController.addTextFieldWithConfigurationHandler {
+                (txtUsername) -> Void in
+                usernameTextField = txtUsername
+                usernameTextField!.placeholder = "Your username here..."
+            }
+            
+            alertController.addTextFieldWithConfigurationHandler {
+                (txtPassword) -> Void in
+                passwordTextField = txtPassword
+                passwordTextField!.secureTextEntry = true
+                passwordTextField!.placeholder = "Your password here..."
+            }
+            
+            alertController.addAction(loginAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        }
+        
+
+        
+    }
+    
+    func check_username(url_to_request: String, post_to_send: String)
+    {
+        let url:NSURL = NSURL(string: url_to_request)!
+        let session = NSURLSession.sharedSession()
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        
+        let data = post_to_send.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler:
+            {(data,response,error) in
+                
+                guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                    print("error")
+                    return
+                }
+                
+                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print(dataString)
+                if dataString == "Matched"{
+                    self.logInStatus = true
+                }
+                else{
+                    self.logInStatus = false
+                    dispatch_async(dispatch_get_main_queue(), {
+                        let errorController = UIAlertController(title: "Error!", message: "Incorrect username and password",preferredStyle: .Alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                        errorController.addAction(defaultAction)
+                        self.presentViewController(errorController, animated: true, completion: nil)
+                    })
+
+                }
+            }
+        );
+        
+        task.resume()
+        
     }
     
 }
