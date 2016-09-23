@@ -29,6 +29,7 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
     
     
     var newMedia: Bool?
+    var uploadPicture: UIImage!
     
     let dimLevel: CGFloat = 0.45
     let dimSpeed: Double = 0.5
@@ -40,7 +41,8 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
     var passWord: NSString! = nil
     
     var logInStatus: Bool = false
-    
+    var latitude: String?
+    var longitude: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,6 +209,14 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         self.presentViewController(imagePickerController, animated: true) {}
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        picker .dismissViewControllerAnimated(true, completion: nil)
+        self.uploadPicture = info[UIImagePickerControllerOriginalImage] as? UIImage
+
+
+    }
+    
     @IBAction func textFieldEditing(sender: UITextField) {
         
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -229,8 +239,11 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
        //locationTextField.enabled = true
     }
     
-    func returnLocationInformation(info: String) {
+    func returnLocationInformation(info: String, latitude: String, longitude: String) {
         print(info)
+        self.latitude = latitude
+        self.longitude = longitude
+        NSLog(latitude)
         self.locationTextField.text = info
     }
     
@@ -356,8 +369,151 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
             
         }
         
+        if self.logInStatus == true{
+            submit_data(self.userName as String)
+        }
+        
 
         
+    }
+    
+    func submit_data(userName: String){
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        NSLog("\(self.bloomDateTextField.text)")
+        let date = dateFormatter.dateFromString(self.bloomDateTextField.text!)
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date!)
+        
+        let year =  components.year
+        let month = components.month
+        let day = components.day
+        
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: "User: \(userName)", message: "Post data?", preferredStyle: .Alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+            let url = NSURL(string: "http://www.psuapples.org/applesPostData.php")
+            let request = NSMutableURLRequest(URL: url!)
+            request.HTTPMethod = "POST"
+            
+            let boundary = self.generateBoundaryString()
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            
+            if (self.uploadPicture == nil)
+            {
+                NSLog("No Picture")
+                return
+            }
+            
+            let image_data = UIImagePNGRepresentation(self.uploadPicture!)
+            
+            
+            if(image_data == nil)
+            {
+                NSLog("No Picture Data")
+                return
+            }
+            
+            let body = NSMutableData()
+            
+            let fname = "test.png"
+            let mimetype = "image/png"
+            
+            //define the data post parameter
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"userName\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(userName)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"species\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(self.speciesTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"year\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(year)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"month\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(month)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"day\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(day)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+    
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"phenophase\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(self.phenophaseTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"comments\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(self.commentsTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"latitude\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(Float(self.latitude!)!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"longitude\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("\(Float(self.longitude!)!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+
+            
+            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData("Content-Type: \(mimetype)\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.appendData(image_data!)
+            body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            
+            body.appendData("--\(boundary)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            
+            
+            request.HTTPBody = body
+            
+            
+            let session = NSURLSession.sharedSession()
+            
+            
+            let task = session.dataTaskWithRequest(request) {
+                (
+                let data, let response, let error) in
+                
+                guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                    print("error")
+                    return
+                }
+                
+                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print(dataString)
+                
+            }
+            
+            task.resume()
+
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func generateBoundaryString() -> String
+    {
+        return "Boundary-\(NSUUID().UUIDString)"
     }
     
     func check_username(url_to_request: String, post_to_send: String)
@@ -385,6 +541,7 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
                 print(dataString)
                 if dataString == "Matched"{
                     self.logInStatus = true
+                    self.submit_data(self.userName as String)
                 }
                 else{
                     self.logInStatus = false

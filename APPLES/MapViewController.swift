@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 protocol locationInformation: class {
-    func returnLocationInformation(info: String)
+    func returnLocationInformation(info: String, latitude: String, longitude: String)
 }
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
@@ -190,7 +190,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
                 //print(locale, locCountry, state)
                 let locationInfo = ("\(locale!), \(state!), \(locCountry!)")
-                self.delegate?.returnLocationInformation(locationInfo)
+                self.delegate?.returnLocationInformation(locationInfo, latitude: self.LatitudeGPS as String, longitude: self.LongitudeGPS as String)
                 //print(locationInfo)
             
             }
