@@ -356,16 +356,19 @@
 				TargetAttributes = {
 					95A8C4DC1D282FBB00D495CC = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = HT3L87G843;
+						DevelopmentTeam = BLJC8N6ASU;
+						LastSwiftMigration = 0810;
 					};
 					95A8C4F01D282FBB00D495CC = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = HT3L87G843;
+						LastSwiftMigration = 0810;
 						TestTargetID = 95A8C4DC1D282FBB00D495CC;
 					};
 					95A8C4FB1D282FBB00D495CC = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = HT3L87G843;
+						LastSwiftMigration = 0810;
 						TestTargetID = 95A8C4DC1D282FBB00D495CC;
 					};
 				};
@@ -614,10 +617,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = APPLES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLES;
+				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLES.articplantphenology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -625,10 +632,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = APPLES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLES;
+				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLES.articplantphenology;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -640,6 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLESTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APPLES.app/APPLES";
 			};
 			name = Debug;
@@ -652,6 +664,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLESTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APPLES.app/APPLES";
 			};
 			name = Release;
@@ -663,6 +676,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLESUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = APPLES;
 			};
 			name = Debug;
@@ -674,6 +688,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PennState.APPLESUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = APPLES;
 			};
 			name = Release;

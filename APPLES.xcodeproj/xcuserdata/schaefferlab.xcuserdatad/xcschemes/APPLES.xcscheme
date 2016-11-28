@@ -106,6 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "APPLES - Arctic Plant Phenology"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

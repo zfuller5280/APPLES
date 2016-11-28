@@ -14,6 +14,12 @@ class PopupModalView: UIViewController, Dimmable {
 
     @IBOutlet weak var infoText: UITextView!
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoText.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
 
     let dimLevel: CGFloat = 0.45
     let dimSpeed: Double = 0.5
@@ -22,9 +28,9 @@ class PopupModalView: UIViewController, Dimmable {
         super.viewDidLoad()
         
         popupView.layer.cornerRadius = 10
-        popupView.layer.borderColor = UIColor.blackColor().CGColor
+        popupView.layer.borderColor = UIColor.black.cgColor
         popupView.layer.borderWidth = 0.25
-        popupView.layer.shadowColor = UIColor.blackColor().CGColor
+        popupView.layer.shadowColor = UIColor.black.cgColor
         popupView.layer.shadowOpacity = 0.6
         popupView.layer.shadowRadius = 15
         popupView.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -35,6 +41,7 @@ class PopupModalView: UIViewController, Dimmable {
         
 
         infoText.attributedText = formattedString
+        infoText.scrollsToTop = true
         
     }
     
@@ -45,17 +52,20 @@ class PopupModalView: UIViewController, Dimmable {
 }
 
 extension NSMutableAttributedString {
-    func bold(text:String) -> NSMutableAttributedString {
+    
+    
+    
+    func bold(_ text:String) -> NSMutableAttributedString {
         let attrs:[String:AnyObject] = [NSFontAttributeName : UIFont(name: "MyriadPro-BlackIt", size: 14)!]
         let boldString = NSMutableAttributedString(string:"\(text)", attributes:attrs)
-        self.appendAttributedString(boldString)
+        self.append(boldString)
         return self
     }
     
-    func normal(text:String)->NSMutableAttributedString {
+    @discardableResult func normal(_ text:String)->NSMutableAttributedString {
         let attrs:[String:AnyObject] = [NSFontAttributeName : UIFont(name: "MyriadPro-Regular", size: 14)!]
         let boldString = NSMutableAttributedString(string:"\(text)", attributes:attrs)
-        self.appendAttributedString(boldString)
+        self.append(boldString)
         return self
     }
 }

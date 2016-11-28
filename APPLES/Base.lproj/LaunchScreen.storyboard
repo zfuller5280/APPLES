@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Apples_Launch-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="k9b-k8-E2f">
-                                <rect key="frame" x="113" y="-34" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apples_Launch-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="k9b-k8-E2f">
+                                <rect key="frame" x="132" y="0.0" width="337" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="k9b-k8-E2f" secondAttribute="height" multiplier="375:667" id="Vk2-zg-knD"/>
                                 </constraints>

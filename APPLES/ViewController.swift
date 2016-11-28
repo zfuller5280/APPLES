@@ -41,37 +41,41 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
     var passWord: NSString! = nil
     
     var logInStatus: Bool = false
+    var requestStatus: Bool = false
+    
     var latitude: String?
     var longitude: String?
+    var cityLocation: String?
+    var stateLocation: String?
+    var countryLocation: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         speciesTextField.layer.cornerRadius = 4.0
-        speciesTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        speciesTextField.layer.borderColor = UIColor.lightGray.cgColor
         speciesTextField.layer.borderWidth = 2.0
         
         bloomDateTextField.layer.cornerRadius = 4.0
-        bloomDateTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        bloomDateTextField.layer.borderColor = UIColor.lightGray.cgColor
         bloomDateTextField.layer.borderWidth = 2.0
         
         phenophaseTextField.layer.cornerRadius = 4.0
-        phenophaseTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        phenophaseTextField.layer.borderColor = UIColor.lightGray.cgColor
         phenophaseTextField.layer.borderWidth = 2.0
         
         locationTextField.layer.cornerRadius = 4.0
-        locationTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        locationTextField.layer.borderColor = UIColor.lightGray.cgColor
         locationTextField.layer.borderWidth = 2.0
         
         commentsTextField.layer.cornerRadius = 4.0
-        commentsTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        commentsTextField.layer.borderColor = UIColor.lightGray.cgColor
         commentsTextField.layer.borderWidth = 2.0
         commentsTextField.padding.top = 12
         
         uploadPhotoBtn.layer.cornerRadius = 4.0
         uploadPhotoBtn.layer.borderWidth = 2.0
-        uploadPhotoBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        uploadPhotoBtn.layer.borderColor = UIColor.lightGray.cgColor
         
         speciesTextField.delegate = self
         bloomDateTextField.delegate = self
@@ -79,43 +83,43 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         locationTextField.delegate = self
         commentsTextField.delegate = self
         
-        speciesTextField.backgroundColor = UIColor.whiteColor()
-        bloomDateTextField.backgroundColor = UIColor.whiteColor()
-        phenophaseTextField.backgroundColor = UIColor.whiteColor()
-        locationTextField.backgroundColor = UIColor.whiteColor()
-        commentsTextField.backgroundColor = UIColor.whiteColor()
+        speciesTextField.backgroundColor = UIColor.white
+        bloomDateTextField.backgroundColor = UIColor.white
+        phenophaseTextField.backgroundColor = UIColor.white
+        locationTextField.backgroundColor = UIColor.white
+        commentsTextField.backgroundColor = UIColor.white
         
-        let toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        toolBar.barStyle = UIBarStyle.BlackTranslucent
-        toolBar.tintColor = UIColor.whiteColor()
-        toolBar.backgroundColor = UIColor.blackColor()
+        toolBar.barStyle = UIBarStyle.blackTranslucent
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
         
         
-        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.tappedToolBarBtn))
-        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(ViewController.donePressed))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        let todayBtn = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.tappedToolBarBtn))
+        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(ViewController.donePressed))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         label.font = UIFont(name: "Myriad Pro", size: 12)
-        label.backgroundColor = UIColor.clearColor()
-        label.textColor = UIColor.whiteColor()
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
         label.text = "Pick a Date"
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         let textBtn = UIBarButtonItem(customView: label)
         toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
         bloomDateTextField.inputAccessoryView = toolBar
         
-        let phenoToolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
+        let phenoToolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
         phenoToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        phenoToolBar.barStyle = UIBarStyle.BlackTranslucent
-        phenoToolBar.tintColor = UIColor.whiteColor()
-        phenoToolBar.backgroundColor = UIColor.blackColor()
+        phenoToolBar.barStyle = UIBarStyle.blackTranslucent
+        phenoToolBar.tintColor = UIColor.white
+        phenoToolBar.backgroundColor = UIColor.black
         
-        let phenoDoneBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(ViewController.donePressed))
+        let phenoDoneBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(ViewController.donePressed))
         let phenoLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width/2, height: self.view.frame.size.height))
         phenoLabel.font = UIFont(name: "Myriad Pro", size: 12)
-        phenoLabel.backgroundColor = UIColor.clearColor()
-        phenoLabel.textColor = UIColor.whiteColor()
+        phenoLabel.backgroundColor = UIColor.clear
+        phenoLabel.textColor = UIColor.white
         phenoLabel.text = "Pick a Phenophase"
         let phenoTextBtn = UIBarButtonItem(customView: phenoLabel)
         phenoToolBar.setItems([phenoTextBtn,flexSpace,phenoDoneBarBtn], animated: true)
@@ -123,13 +127,14 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         
         let pickerView = UIPickerView()
         pickerView.delegate = self
-        //pickerView.selectRow(0, inComponent: 0, animated: true)
+        pickerView.selectRow(0, inComponent: 0, animated: true)
         phenophaseTextField.inputView = pickerView
-        
+        phenophaseTextField.text = ""
+
         
     }
     
-    func donePressed(sender: UIBarButtonItem) {
+    func donePressed(_ sender: UIBarButtonItem) {
 
         phenophaseTextField.resignFirstResponder()
         bloomDateTextField.resignFirstResponder()
@@ -142,136 +147,157 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
         textField.resignFirstResponder()
         return true;
     }
 
-    func tappedToolBarBtn(sender: UIBarButtonItem) {
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateformatter.timeStyle = NSDateFormatterStyle.NoStyle
-        bloomDateTextField.text = dateformatter.stringFromDate(NSDate())
+    func tappedToolBarBtn(_ sender: UIBarButtonItem) {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.medium
+        dateformatter.timeStyle = DateFormatter.Style.none
+        
+        bloomDateTextField.text = dateformatter.string(from: Date())
         bloomDateTextField.resignFirstResponder()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickOption.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickOption[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         phenophaseTextField.text = pickOption[row]
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 
-    func openCamera(button: UIButton)
+        if phenophaseTextField.text == ""{
+            if textField == self.phenophaseTextField {
+                phenophaseTextField.text = pickOption[0]
+            }
+            
+        }
+ 
+        return true
+    }
+
+    func openCamera(_ button: UIButton)
     {
         
         if UIImagePickerController.isSourceTypeAvailable(
-            UIImagePickerControllerSourceType.Camera) {
+            UIImagePickerControllerSourceType.camera) {
             
             let imagePicker = UIImagePickerController()
             
             imagePicker.delegate = self
             imagePicker.sourceType =
-                UIImagePickerControllerSourceType.Camera
+                UIImagePickerControllerSourceType.camera
             imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
             imagePicker.allowsEditing = false
             
-            self.presentViewController(imagePicker, animated: true,
+            self.present(imagePicker, animated: true,
                                        completion: nil)
             newMedia = true
         }
     }
     
-    func openGallary(button: UIButton)
+    func openGallary(_ button: UIButton)
     {
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-        imagePickerController.modalPresentationStyle = .Popover
+        imagePickerController.modalPresentationStyle = .popover
         let presentationController = imagePickerController.popoverPresentationController
         
         
         presentationController?.sourceView = button
         presentationController?.sourceRect = button.bounds
-        presentationController?.permittedArrowDirections = .Any
+        presentationController?.permittedArrowDirections = .any
         
-        self.presentViewController(imagePickerController, animated: true) {}
+        self.present(imagePickerController, animated: true) {}
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-        picker .dismissViewControllerAnimated(true, completion: nil)
+        picker .dismiss(animated: true, completion: nil)
         self.uploadPicture = info[UIImagePickerControllerOriginalImage] as? UIImage
 
 
     }
     
-    @IBAction func textFieldEditing(sender: UITextField) {
+    @IBAction func textFieldEditing(_ sender: UITextField) {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.medium
+        dateformatter.timeStyle = DateFormatter.Style.none
+        bloomDateTextField.text = dateformatter.string(from: Date())
         
         let datePickerView:UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        datePickerView.addTarget(self, action: #selector(ViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(ViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
     
-    @IBAction func locationFieldEditing(sender: UITextField) {
-        let dummyView = UIView(frame: CGRectMake(100,100,100,100))
-        dummyView.backgroundColor = UIColor.clearColor()
+    @IBAction func locationFieldEditing(_ sender: UITextField) {
+        let dummyView = UIView(frame: CGRect(x: 100,y: 100,width: 100,height: 100))
+        dummyView.backgroundColor = UIColor.clear
         locationTextField.inputView = dummyView
         
-        let mapVC = self.storyboard?.instantiateViewControllerWithIdentifier("mapViewController") as! MapViewController!
-        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        mapVC.delegate = self
-        self.presentViewController(mapVC!, animated: true, completion: nil)
+        let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "mapViewController") as! MapViewController!
+        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        mapVC?.delegate = self
+        self.present(mapVC!, animated: true, completion: nil)
         
        //locationTextField.enabled = true
     }
     
-    func returnLocationInformation(info: String, latitude: String, longitude: String) {
+    func returnLocationInformation(_ info: String, latitude: String, longitude: String) {
         print(info)
         self.latitude = latitude
         self.longitude = longitude
         NSLog(latitude)
         self.locationTextField.text = info
+        let locationTextArray = info.characters.split{$0 == ","}.map(String.init)
+        self.cityLocation = locationTextArray[0]
+        self.stateLocation = locationTextArray[1]
+        self.countryLocation = locationTextArray[2]
     }
     
     
-    func datePickerValueChanged(sender:UIDatePicker) {
+    func datePickerValueChanged(_ sender:UIDatePicker) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        bloomDateTextField.text = dateFormatter.stringFromDate(sender.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        bloomDateTextField.text = dateFormatter.string(from: sender.date)
         
     }
     
 
     
-    @IBAction func uploadBtnClicked(sender: AnyObject) {
-        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
+    @IBAction func uploadBtnClicked(_ sender: AnyObject) {
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
         {
             UIAlertAction in
             self.openCamera(self.uploadButton)
         }
-        let gallaryAction = UIAlertAction(title: "Library", style: UIAlertActionStyle.Default)
+        let gallaryAction = UIAlertAction(title: "Library", style: UIAlertActionStyle.default)
         {
             UIAlertAction in
             self.openGallary(self.uploadButton)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
         {
             UIAlertAction in
         }
@@ -281,31 +307,31 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         alert.addAction(gallaryAction)
         alert.addAction(cancelAction)
         // Present the controller
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone
+        if UIDevice.current.userInterfaceIdiom == .phone
         {
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
         else
         {
             
             alert.popoverPresentationController?.sourceView = self.uploadButton.imageView
             alert.popoverPresentationController?.sourceRect = self.uploadButton.bounds
-            alert.popoverPresentationController?.permittedArrowDirections = .Any
-            self.presentViewController(alert, animated: true, completion: nil)
+            alert.popoverPresentationController?.permittedArrowDirections = .any
+            self.present(alert, animated: true, completion: nil)
             
         }
     }
     
     // MARK: - Segues
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        dim(.In, alpha: dimLevel, speed: dimSpeed)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        dim(.in, alpha: dimLevel, speed: dimSpeed)
     }
     
-    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
-        dim(.Out, speed: dimSpeed)
+    @IBAction func unwindFromSecondary(_ segue: UIStoryboardSegue) {
+        dim(.out, speed: dimSpeed)
     }
     
-    @IBAction func submitBtnClicked(sender: AnyObject) {
+    @IBAction func submitBtnClicked(_ sender: AnyObject) {
         if self.logInStatus == false{
             var usernameTextField: UITextField?
             var passwordTextField: UITextField?
@@ -313,59 +339,70 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
             let alertController = UIAlertController(
                 title: "Log in",
                 message: "Please enter your information",
-                preferredStyle: UIAlertControllerStyle.Alert)
+                preferredStyle: UIAlertControllerStyle.alert)
             
             let loginAction = UIAlertAction(
-            title: "Submit Data", style: UIAlertActionStyle.Default) {
+            title: "Submit Data", style: UIAlertActionStyle.default) {
                 (action) -> Void in
                 
                 if let userNameField = usernameTextField?.text {
-                    self.userName = userNameField
+                    self.userName = userNameField as NSString!
                 } else {
                     print("No Username entered")
                 }
                 
                 if let passWordField = passwordTextField?.text {
-                    self.passWord = passWordField
+                    self.passWord = passWordField as NSString!
                 } else {
                     print("No password entered")
                 }
                 
                 // Check if username and password are blank
-                if ( self.userName.isEqualToString("") || self.passWord.isEqualToString("") ) {
+                if ( self.userName.isEqual(to: "") || self.passWord.isEqual(to: "") ) {
                     
-                    let errorController = UIAlertController(title: "Error!", message: "Please enter a username and password",preferredStyle: .Alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    let errorController = UIAlertController(title: "Error!", message: "Please enter a username and password",preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     errorController.addAction(defaultAction)
-                    self.presentViewController(errorController, animated: true, completion: nil)
+
+                    self.present(errorController, animated: true, completion: nil)
                     
                     
                 }
                     
                 else{
-                    let url_to_request: String = ("http://www.psuapples.org/applesConnect.php")
-                    let post_to_send = "userName=\(self.userName)&passWord=\(self.passWord)"
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.bringSubview(toFront: appDelegate.activityIndicator)
+                    appDelegate.activityIndicator.startAnimating()
+                    
+                    let url_to_request: String = ("http://www.applesproject.org/applesProjectConnect.php")
+                    let post_to_send = "userName=\(self.userName!)&passWord=\(self.passWord!)"
                     self.check_username(url_to_request, post_to_send: post_to_send)
+                    DispatchQueue.main.async(execute: { // This makes the code run on the main thread
+                        appDelegate.activityIndicator.stopAnimating()
+                    })
                     
                 }
                 
             }
             
-            alertController.addTextFieldWithConfigurationHandler {
+            alertController.addTextField {
                 (txtUsername) -> Void in
                 usernameTextField = txtUsername
                 usernameTextField!.placeholder = "Your username here..."
             }
             
-            alertController.addTextFieldWithConfigurationHandler {
+            alertController.addTextField {
                 (txtPassword) -> Void in
                 passwordTextField = txtPassword
-                passwordTextField!.secureTextEntry = true
+                passwordTextField!.isSecureTextEntry = true
                 passwordTextField!.placeholder = "Your password here..."
             }
-            
+
             alertController.addAction(loginAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion:{
+                alertController.view.superview!.subviews[1].isUserInteractionEnabled = true
+                alertController.view.superview!.subviews[1].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
             
         }
         
@@ -377,29 +414,40 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
         
     }
     
-    func submit_data(userName: String){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+    func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func submit_data(_ userName: String){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
         NSLog("\(self.bloomDateTextField.text)")
-        let date = dateFormatter.dateFromString(self.bloomDateTextField.text!)
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: date!)
+        let date = dateFormatter.date(from: self.bloomDateTextField.text!)
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.day , .month , .year], from: date!)
         
-        let year =  components.year
-        let month = components.month
-        let day = components.day
+        let year =  components.year!
+        let month = components.month!
+        let day = components.day!
         
         
         // Create the alert controller
-        let alertController = UIAlertController(title: "User: \(userName)", message: "Post data?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: nil, message: nil , preferredStyle: .alert)
         
         // Create the actions
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             UIAlertAction in
             NSLog("OK Pressed")
-            let url = NSURL(string: "http://www.psuapples.org/applesPostData.php")
-            let request = NSMutableURLRequest(URL: url!)
-            request.HTTPMethod = "POST"
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.bringSubview(toFront: appDelegate.activityIndicator)
+            appDelegate.activityIndicator.startAnimating()
+            
+            let url = URL(string: "http://www.applesproject.org/applesProjectPostData.php")
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST"
             
             let boundary = self.generateBoundaryString()
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -410,7 +458,7 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
                 return
             }
             
-            let image_data = UIImagePNGRepresentation(self.uploadPicture!)
+            let image_data = UIImageJPEGRepresentation(self.uploadPicture!, 0.8)
             
             
             if(image_data == nil)
@@ -418,7 +466,8 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
                 NSLog("No Picture Data")
                 return
             }
-            
+
+
             let body = NSMutableData()
             
             let fname = "test.png"
@@ -426,130 +475,198 @@ UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIP
             
             //define the data post parameter
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"userName\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(userName)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"userName\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(userName)\r\n".data(using: String.Encoding.utf8)!)
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"species\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(self.speciesTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"species\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.speciesTextField.text!)\r\n".data(using: String.Encoding.utf8)!)
 
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"year\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(year)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"year\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(year)\r\n".data(using: String.Encoding.utf8)!)
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"month\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(month)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"month\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(month)\r\n".data(using: String.Encoding.utf8)!)
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"day\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(day)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"day\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(day)\r\n".data(using: String.Encoding.utf8)!)
     
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"phenophase\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(self.phenophaseTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"phenophase\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.phenophaseTextField.text!)\r\n".data(using: String.Encoding.utf8)!)
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"comments\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(self.commentsTextField.text!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"comments\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.commentsTextField.text!)\r\n".data(using: String.Encoding.utf8)!)
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"latitude\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(Float(self.latitude!)!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"latitude\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(Float(self.latitude!)!)\r\n".data(using: String.Encoding.utf8)!)
 
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"longitude\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("\(Float(self.longitude!)!)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"longitude\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(Float(self.longitude!)!)\r\n".data(using: String.Encoding.utf8)!)
+            
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"city\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.cityLocation!)\r\n".data(using: String.Encoding.utf8)!)
+            
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"state\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.stateLocation!)\r\n".data(using: String.Encoding.utf8)!)
+            
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"country\"\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append("\(self.countryLocation!)\r\n".data(using: String.Encoding.utf8)!)
 
             
-            body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData("Content-Type: \(mimetype)\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-            body.appendData(image_data!)
-            body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".data(using: String.Encoding.utf8)!)
+            body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
+            body.append(image_data!)
+            body.append("\r\n".data(using: String.Encoding.utf8)!)
             
             
-            body.appendData("--\(boundary)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
+            
+            request.httpBody = body as Data
             
             
-            
-            request.HTTPBody = body
-            
-            
-            let session = NSURLSession.sharedSession()
+            let session = URLSession.shared
             
             
-            let task = session.dataTaskWithRequest(request) {
+            let task = session.dataTask(with: request, completionHandler: {
                 (
-                let data, let response, let error) in
+                data, response, error) in
                 
-                guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                guard let _:Data = data, let _:URLResponse = response, error == nil else {
                     print("error")
                     return
                 }
-                
-                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print(dataString)
-                
-            }
+
+                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print(dataString!)
+                if dataString! == "Success"{
+
+                    print(dataString!)
+                    self.requestStatus = true
+                    if self.requestStatus == true{
+                        let alert = UIAlertController(title: "Success!", message: "Your data was uploaded to APPLES", preferredStyle: UIAlertControllerStyle.alert)
+                        DispatchQueue.main.async(execute: { // This makes the code run on the main thread
+                            appDelegate.activityIndicator.stopAnimating()
+                        })
+                        alert.addAction(UIKit.UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                else{
+                    
+                    let alert = UIAlertController(title: "Error!", message: "Your data was not uploaded, please try again...", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIKit.UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
+            }) 
             
             task.resume()
-
+            
+            
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             NSLog("Cancel Pressed")
         }
+        
+        let imageView = UIImageView(frame: CGRect(x: 140, y: 110, width: 120, height: 120))
+        imageView.image = self.uploadPicture
+        alertController.view.addSubview(imageView)
+        
+        //let alertMessage = UIAlertController(title: "My Title", message: "My Message", preferredStyle: .Alert)
+        
+        let image = UIImage(named: "myImage")
+        //let action = UIAlertAction(title: "Submit", style: .Default, handler: nil)
+        okAction.setValue(image, forKey: "image")
+        //alertMessage .addAction(okAction)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        
+        let messageText = NSMutableAttributedString(
+            string: "User Name: \(self.userName!)\nSpecies: \(self.speciesTextField.text!)\nPhenophase: \(self.phenophaseTextField.text!)\nLocation: \(self.cityLocation!)\nImage: \n\n\n\n\n\n\n",
+            attributes: [
+                NSParagraphStyleAttributeName: paragraphStyle,
+                NSFontAttributeName : UIFont(name: "MyriadPro-Regular", size: 14)!,
+                NSForegroundColorAttributeName : UIColor.black
+            ]
+        )
+        
+        let titleText = NSMutableAttributedString(
+            string: "Preview:",
+            attributes: [
+                NSParagraphStyleAttributeName: paragraphStyle,
+                NSFontAttributeName : UIFont(name: "MyriadPro-BlackIt", size: 18)!,
+                NSForegroundColorAttributeName : UIColor.black
+            ]
+        )
+        
+        alertController.setValue(titleText, forKey: "attributedTitle")
+        alertController.setValue(messageText, forKey: "attributedMessage")
+        
         
         // Add the actions
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         
         // Present the controller
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
+        
+
+
         
     }
     
     func generateBoundaryString() -> String
     {
-        return "Boundary-\(NSUUID().UUIDString)"
+        return "Boundary-\(UUID().uuidString)"
     }
     
-    func check_username(url_to_request: String, post_to_send: String)
+    func check_username(_ url_to_request: String, post_to_send: String)
     {
-        let url:NSURL = NSURL(string: url_to_request)!
-        let session = NSURLSession.sharedSession()
+        let url:URL = URL(string: url_to_request)!
+        let session = URLSession.shared
         
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        
-        let data = post_to_send.dataUsingEncoding(NSUTF8StringEncoding)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
         
-        let task = session.uploadTaskWithRequest(request, fromData: data, completionHandler:
+        let data = post_to_send.data(using: String.Encoding.utf8)
+        
+        let task = session.uploadTask(with: request as URLRequest, from: data, completionHandler:
             {(data,response,error) in
                 
-                guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                guard let _:Data = data, let _:URLResponse = response, error == nil else {
                     print("error")
                     return
                 }
                 
-                let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print(dataString)
+                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print(dataString!)
                 if dataString == "Matched"{
                     self.logInStatus = true
                     self.submit_data(self.userName as String)
                 }
                 else{
                     self.logInStatus = false
-                    dispatch_async(dispatch_get_main_queue(), {
-                        let errorController = UIAlertController(title: "Error!", message: "Incorrect username and password",preferredStyle: .Alert)
-                        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    DispatchQueue.main.async(execute: {
+                        let errorController = UIAlertController(title: "Error!", message: "Incorrect username and password",preferredStyle: .alert)
+                        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                         errorController.addAction(defaultAction)
-                        self.presentViewController(errorController, animated: true, completion: nil)
+                        self.present(errorController, animated: true, completion: nil)
                     })
 
                 }
@@ -566,15 +683,15 @@ class TextField: UITextField {
     
     var padding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12);
     
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
     
-    override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
 }

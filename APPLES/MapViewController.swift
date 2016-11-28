@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 protocol locationInformation: class {
-    func returnLocationInformation(info: String, latitude: String, longitude: String)
+    func returnLocationInformation(_ info: String, latitude: String, longitude: String)
 }
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
@@ -35,8 +35,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         doneBtn.layer.cornerRadius = 4.0
         doneBtn.layer.borderWidth = 2.0
-        doneBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-        doneBtn.backgroundColor = UIColor.whiteColor()
+        doneBtn.layer.borderColor = UIColor.lightGray.cgColor
+        doneBtn.backgroundColor = UIColor.white
         
         self.locationManager.requestAlwaysAuthorization()
         
@@ -48,12 +48,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.startUpdatingLocation()
             
             map.delegate = self
-            map.mapType = .Standard
-            map.zoomEnabled = true
-            map.scrollEnabled = true
+            map.mapType = .standard
+            map.isZoomEnabled = true
+            map.isScrollEnabled = true
             
             if let coor = map.userLocation.location?.coordinate{
-                map.setCenterCoordinate(coor, animated: true)
+                map.setCenter(coor, animated: true)
             }
             addLongPressGesture()
         }
@@ -61,12 +61,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         locationManager.stopUpdatingLocation() // Stop Location Manager - keep here to run just once
         
-        LatitudeGPS = String(format: "%.6f", manager.location!.coordinate.latitude)
-        LongitudeGPS = String(format: "%.6f", manager.location!.coordinate.longitude)
+        LatitudeGPS = String(format: "%.6f", manager.location!.coordinate.latitude) as NSString
+        LongitudeGPS = String(format: "%.6f", manager.location!.coordinate.longitude) as NSString
         
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         
@@ -75,12 +75,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         map.showsUserLocation = true;
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         map.showsUserLocation = false
     }
     
@@ -90,14 +90,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.map.addGestureRecognizer(longPressRecogniser)
     }
     
-    func handleLongPress(gestureRecognizer:UIGestureRecognizer){
-        if gestureRecognizer.state != .Began{
+    func handleLongPress(_ gestureRecognizer:UIGestureRecognizer){
+        if gestureRecognizer.state != .began{
             return
         }
         
-        let touchPoint:CGPoint = gestureRecognizer.locationInView(self.map)
+        let touchPoint:CGPoint = gestureRecognizer.location(in: self.map)
         let touchMapCoordinate:CLLocationCoordinate2D =
-            self.map.convertPoint(touchPoint, toCoordinateFromView: self.map)
+            self.map.convert(touchPoint, toCoordinateFrom: self.map)
         
         let annot:MKPointAnnotation = MKPointAnnotation()
         annot.coordinate = touchMapCoordinate
@@ -115,7 +115,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func centerMap(center:CLLocationCoordinate2D){
+    func centerMap(_ center:CLLocationCoordinate2D){
         self.saveCurrentLocation(center)
         
         let spanX = 0.007
@@ -125,7 +125,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         map.setRegion(newRegion, animated: true)
     }
     
-    func saveCurrentLocation(center:CLLocationCoordinate2D){
+    func saveCurrentLocation(_ center:CLLocationCoordinate2D){
         let message = "\(center.latitude) , \(center.longitude)"
         print(message)
         myLocation = center
@@ -133,7 +133,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     static var enable:Bool = true
-    @IBAction func getMyLocation(sender: UIButton) {
+    @IBAction func getMyLocation(_ sender: UIButton) {
         
         if CLLocationManager.locationServicesEnabled() {
             if MapViewController.enable {
@@ -147,10 +147,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         let identifier = "pin"
         var view : MKPinAnnotationView
-        if let dequeueView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView{
+        if let dequeueView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView{
             dequeueView.annotation = annotation
             view = dequeueView
         }
@@ -158,9 +158,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
-        view.pinTintColor =  UIColor.redColor()
+        view.pinTintColor =  UIColor.red
         return view
     }
     
@@ -170,7 +170,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
 
-    @IBAction func doneBtnClicked(sender: AnyObject) {
+    @IBAction func doneBtnClicked(_ sender: AnyObject) {
 
         let location = CLLocation(latitude: (self.myLocation?.latitude)!, longitude: (self.myLocation?.longitude)!)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
@@ -200,7 +200,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             })
         
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     

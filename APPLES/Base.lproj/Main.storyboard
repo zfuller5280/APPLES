@@ -1,23 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="MYRIADPRO-REGULAR.OTF">
+        <array key="MYRIADPRO-REGULAR.OTF">
             <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-            <string>MyriadPro-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Popup Modal View-->
@@ -39,33 +35,34 @@
                                         <rect key="frame" x="285" y="581" width="39" height="30"/>
                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                         <state key="normal" title="Close">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="Ruf-X8-xG7" kind="unwind" unwindAction="unwindFromSecondary:" id="06v-Z8-883"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qEm-Ph-8sx">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEm-Ph-8sx">
                                         <rect key="frame" x="8" y="19" width="319" height="554"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qEm-Ph-8sx" secondAttribute="height" multiplier="319:554" id="uuB-gJ-AzA"/>
                                         </constraints>
-                                        <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="qEm-Ph-8sx" secondAttribute="trailing" constant="8" id="3bt-LN-Z8z"/>
+                                    <constraint firstItem="qEm-Ph-8sx" firstAttribute="top" secondItem="Ejj-H7-mRX" secondAttribute="top" constant="19" id="9KL-H5-8gV"/>
                                     <constraint firstItem="zkX-B9-T2V" firstAttribute="trailing" secondItem="Ejj-H7-mRX" secondAttribute="trailingMargin" constant="-3" id="Leq-ov-BVB"/>
                                     <constraint firstItem="qEm-Ph-8sx" firstAttribute="leading" secondItem="Ejj-H7-mRX" secondAttribute="leading" constant="8" id="imi-BJ-9zm"/>
                                     <constraint firstItem="zkX-B9-T2V" firstAttribute="bottom" secondItem="Ejj-H7-mRX" secondAttribute="bottomMargin" id="olm-2z-h0I"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ejj-H7-mRX" firstAttribute="top" secondItem="wuB-sz-o8a" secondAttribute="bottom" constant="8" id="HDd-ed-iwY"/>
                             <constraint firstItem="Ejj-H7-mRX" firstAttribute="centerX" secondItem="sfa-hx-9Qn" secondAttribute="centerX" id="OuF-yh-Kh6"/>
@@ -106,24 +103,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="r5i-xU-gDd"/>
                                 </constraints>
-                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="40" width="323" height="46"/>
-                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-T3-T4F" userLabel="Bloom Date Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
                                 <rect key="frame" x="26" y="101" width="323" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="gJa-ZH-99g"/>
                                 </constraints>
-                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="116" width="323" height="46"/>
-                                </variation>
                                 <connections>
                                     <action selector="textFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="5UD-AJ-YFd"/>
                                 </connections>
@@ -133,24 +124,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="UXL-9l-2z3"/>
                                 </constraints>
-                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="276" width="323" height="46"/>
-                                </variation>
                                 <connections>
                                     <action selector="locationFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="txa-AO-ozk"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" placeholder="Additional Comments" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Blt-zQ-ZSg" userLabel="Comments Text Field" customClass="TextField" customModule="APPLES" customModuleProvider="target">
                                 <rect key="frame" x="26" y="315" width="323" height="188"/>
-                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="353" width="323" height="143"/>
-                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXi-LE-Rys">
                                 <rect key="frame" x="26" y="523" width="323" height="45"/>
@@ -159,11 +144,8 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
                                 <state key="normal" title="Upload Photo">
-                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="514" width="323" height="56"/>
-                                </variation>
                                 <connections>
                                     <action selector="uploadBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgD-zH-OsT"/>
                                 </connections>
@@ -175,9 +157,6 @@
                                     <constraint firstAttribute="width" constant="187" id="wXF-Xg-ERr"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="pheno_btn.png"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="244" width="187" height="0.0"/>
-                                </variation>
                                 <connections>
                                     <segue destination="exP-Tn-4r6" kind="presentation" modalPresentationStyle="overCurrentContext" id="ER2-we-ckV"/>
                                 </connections>
@@ -187,12 +166,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="ssJ-Q5-k8m"/>
                                 </constraints>
-                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.47450980392156861" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="190" width="323" height="46"/>
-                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ei-82-w76">
                                 <rect key="frame" x="26" y="588" width="323" height="49"/>
@@ -201,15 +177,12 @@
                                     <constraint firstAttribute="height" priority="750" constant="49" id="7Kb-JA-gUT"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="submit-01.png"/>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="588" width="323" height="49"/>
-                                </variation>
                                 <connections>
                                     <action selector="submitBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eR8-BM-zP6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rfF-Y9-NW8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="0Nf-ST-NGi"/>
                             <constraint firstItem="ROT-lv-ekI" firstAttribute="top" secondItem="XaS-NW-Odn" secondAttribute="bottom" constant="16" id="0Xf-ph-g7G"/>
@@ -245,7 +218,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ei-82-w76" secondAttribute="bottom" constant="30" id="uqU-r4-K0f"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bloomDateTextField" destination="ruf-T3-T4F" id="yet-PF-QYY"/>
                         <outlet property="commentsTextField" destination="Blt-zQ-ZSg" id="xeg-t2-zzK"/>
@@ -270,11 +242,12 @@
                         <viewControllerLayoutGuide type="bottom" id="n7b-n0-5JS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U1A-Lf-Bgu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-17-fmP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGr-G2-pXH">
                                 <rect key="frame" x="26" y="519" width="323" height="45"/>
@@ -285,7 +258,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
                                 <state key="normal" title="Done">
-                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -293,15 +266,12 @@
                                         <exclude reference="cwe-us-u5F"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="514" width="323" height="56"/>
-                                </variation>
                                 <connections>
                                     <action selector="doneBtnClicked:" destination="U8w-Gq-kRC" eventType="touchUpInside" id="klP-Yi-Y7T"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="uGr-G2-pXH" secondAttribute="trailing" constant="6" id="3r7-NI-izz"/>
                             <constraint firstItem="uGr-G2-pXH" firstAttribute="leading" secondItem="U1A-Lf-Bgu" secondAttribute="leadingMargin" constant="6" id="Q0Q-jj-WDP"/>
