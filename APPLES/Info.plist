@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Used to take pictures to upload to website database</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -19,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>5</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -37,10 +35,14 @@
 		<key>www.psuapples.org</key>
 		<string></string>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to take pictures to upload to website database</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>I need location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>I need location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to select a picture to upload to website database</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>MYRIADPRO-REGULAR.OTF</string>
